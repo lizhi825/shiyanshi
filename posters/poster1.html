@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=800,height=1200">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;600;700;900&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 800px;
+  height: 1200px;
+  overflow: hidden;
+  font-family: 'Noto Sans SC', sans-serif;
+  background: #0a1628;
+  position: relative;
+}
+
+/* 深海背景 */
+.bg-ocean {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #0a1628 0%, #0d2847 15%, #0f3460 30%, #0a2647 50%, #0d1b3e 70%, #0a1628 100%);
+  z-index: 0;
+}
+
+/* 气泡装饰 */
+.bubbles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), rgba(100,180,255,0.05));
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.b1 { width: 60px; height: 60px; top: 8%; left: 12%; }
+.b2 { width: 40px; height: 40px; top: 18%; right: 15%; }
+.b3 { width: 80px; height: 80px; top: 35%; left: 8%; }
+.b4 { width: 30px; height: 30px; top: 50%; right: 10%; }
+.b5 { width: 50px; height: 50px; top: 65%; left: 15%; }
+.b6 { width: 45px; height: 45px; top: 75%; right: 20%; }
+.b7 { width: 70px; height: 70px; top: 85%; left: 25%; }
+.b8 { width: 35px; height: 35px; top: 90%; right: 8%; }
+
+/* 光线 */
+.light-rays {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 600px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(100,180,255,0.12) 0%, transparent 70%);
+  z-index: 1;
+}
+
+/* 主内容区 */
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* 顶部校徽区 */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.top-bar .dot {
+  width: 8px; height: 8px;
+  background: rgba(100,180,255,0.6);
+  border-radius: 50%;
+}
+.top-bar .line {
+  width: 60px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(100,180,255,0.4), transparent);
+}
+.top-school {
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.top-school-en {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.25);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* 主标题 */
+.hero {
+  text-align: center;
+  margin-bottom: 8px;
+}
+.hero-tag {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 8px;
+  color: #4da8da;
+  border: 1px solid rgba(77,168,218,0.3);
+  padding: 6px 24px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+}
+.hero h1 .highlight {
+  background: linear-gradient(135deg, #4da8da, #7dd3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero .subtitle {
+  font-size: 16px;
+  letter-spacing: 6px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 4px;
+}
+.hero .subtitle-en {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.25);
+  font-style: italic;
+}
+
+/* 分隔线 */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 28px 0;
+}
+.divider .diamond {
+  width: 6px; height: 6px;
+  background: #4da8da;
+  transform: rotate(45deg);
+}
+.divider .dline {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(77,168,218,0.3), transparent);
+}
+
+/* 纳新关键词 */
+.keywords {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.keyword {
+  text-align: center;
+  padding: 16px 20px;
+  border: 1px solid rgba(77,168,218,0.2);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.03);
+  min-width: 100px;
+}
+.keyword .kw-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.keyword .kw-title {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 2px;
+}
+
+/* 研究所介绍 */
+.intro-section {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(77,168,218,0.1);
+  border-radius: 6px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+}
+.intro-section h3 {
+  font-size: 15px;
+  color: #4da8da;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+}
+.intro-section p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.8;
+  letter-spacing: 1px;
+}
+
+/* 研究方向 */
+.directions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.dir-card {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(77,168,218,0.1);
+  border-radius: 6px;
+  padding: 18px 14px;
+  text-align: center;
+}
+.dir-card .dir-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.dir-card .dir-name {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+
+/* 要求与收获 */
+.info-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.info-box {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(77,168,218,0.1);
+  border-radius: 6px;
+  padding: 18px;
+}
+.info-box h4 {
+  font-size: 13px;
+  color: #4da8da;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+.info-box ul {
+  list-style: none;
+}
+.info-box li {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  padding-left: 12px;
+  position: relative;
+  letter-spacing: 1px;
+}
+.info-box li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px;
+  width: 4px; height: 4px;
+  background: #4da8da;
+  border-radius: 50%;
+}
+
+/* CTA */
+.cta-section {
+  text-align: center;
+  margin-top: auto;
+  padding-top: 20px;
+}
+.cta-box {
+  display: inline-block;
+  border: 2px solid #4da8da;
+  padding: 16px 40px;
+  border-radius: 4px;
+  background: rgba(77,168,218,0.08);
+}
+.cta-box .cta-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 6px;
+  margin-bottom: 4px;
+}
+.cta-box .cta-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 2px;
+}
+
+/* 底部联系 */
+.footer-info {
+  text-align: center;
+  margin-top: 16px;
+}
+.footer-info span {
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 2px;
+  margin: 0 12px;
+}
+.footer-info .sep {
+  color: rgba(77,168,218,0.3);
+}
+
+/* 底部波浪 */
+.wave {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, transparent, rgba(77,168,218,0.05));
+  z-index: 1;
+}
+</style>
+</head>
+<body>
+<div class="bg-ocean"></div>
+<div class="light-rays"></div>
+<div class="bubbles">
+  <div class="bubble b1"></div>
+  <div class="bubble b2"></div>
+  <div class="bubble b3"></div>
+  <div class="bubble b4"></div>
+  <div class="bubble b5"></div>
+  <div class="bubble b6"></div>
+  <div class="bubble b7"></div>
+  <div class="bubble b8"></div>
+</div>
+
+<div class="content">
+  <div class="top-bar">
+    <div class="line"></div>
+    <div class="dot"></div>
+    <div class="line"></div>
+  </div>
+  <div class="top-school">哈尔滨理工大学 · 荣成学院</div>
+  <div class="top-school-en">HARBIN UNIVERSITY OF SCIENCE AND TECHNOLOGY</div>
+
+  <div class="hero">
+    <div class="hero-tag">2026 纳 新</div>
+    <h1>海洋智能装备<br>研究所<span class="highlight">招新</span></h1>
+    <div class="subtitle">海 智 所</div>
+    <div class="subtitle-en">Marine Intelligent Equipment Research Institute</div>
+  </div>
+
+  <div class="divider">
+    <div class="dline"></div>
+    <div class="diamond"></div>
+    <div class="dline"></div>
+  </div>
+
+  <div class="keywords">
+    <div class="keyword">
+      <div class="kw-icon">🔬</div>
+      <div class="kw-title">科研实践</div>
+    </div>
+    <div class="keyword">
+      <div class="kw-icon">🏆</div>
+      <div class="kw-title">竞赛获奖</div>
+    </div>
+    <div class="keyword">
+      <div class="kw-icon">📄</div>
+      <div class="kw-title">发表论文</div>
+    </div>
+    <div class="keyword">
+      <div class="kw-icon">🎓</div>
+      <div class="kw-title">保研深造</div>
+    </div>
+    <div class="keyword">
+      <div class="kw-icon">🤝</div>
+      <div class="kw-title">团队文化</div>
+    </div>
+  </div>
+
+  <div class="intro-section">
+    <h3>▎关于我们</h3>
+    <p>海智所成立于2015年，是荣成学院首批院级研究所，位于一号实验楼401。现有副教授1人、指导教师6人，研究生4人、本科生二十余人。下设三个研究组，承担国家级大创项目多项，发表SCI/EI论文10余篇，获省级以上奖项6项。</p>
+  </div>
+
+  <div class="directions">
+    <div class="dir-card">
+      <div class="dir-icon">🧪</div>
+      <div class="dir-name">海洋装备材料制备<br>IPMC人工肌肉 · 仿生鱼</div>
+    </div>
+    <div class="dir-card">
+      <div class="dir-icon">⚙️</div>
+      <div class="dir-name">机电一体化<br>房车部件 · 电动移位器</div>
+    </div>
+    <div class="dir-card">
+      <div class="dir-icon">🔩</div>
+      <div class="dir-name">金属精密成形<br>大锻件工艺 · 数值模拟</div>
+    </div>
+  </div>
+
+  <div class="info-row">
+    <div class="info-box">
+      <h4>📋 加入要求</h4>
+      <ul>
+        <li>不限专业，感兴趣即可报名</li>
+        <li>参加开学培训（约三周）</li>
+        <li>学习 CAD / Creo / 编程</li>
+        <li>每周一考，循序渐进</li>
+        <li>只要认真学，都能通过！</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h4>🎁 你的收获</h4>
+      <ul>
+        <li>参与国家级/省级大创项目</li>
+        <li>学习科研方法与论文写作</li>
+        <li>获得德育分与竞赛证书</li>
+        <li>有机会发表SCI/EI论文</li>
+        <li>团建·桌游·温馨大家庭</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-box">
+      <div class="cta-title">加 入 我 们</div>
+      <div class="cta-sub">JOIN US · 2026</div>
+    </div>
+  </div>
+
+  <div class="footer-info">
+    <span>📍 一号实验楼401</span>
+    <span class="sep">|</span>
+    <span>📞 李智浩 17667031628</span>
+    <span class="sep">|</span>
+    <span>📧 3534864113@qq.com</span>
+  </div>
+</div>
+
+<div class="wave"></div>
+</body>
+</html>
