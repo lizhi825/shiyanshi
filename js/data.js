@@ -12,12 +12,12 @@ const SiteData = {
         { id: 5, date: '2026-04-08', title: '关于研究所实验室开放日的通知', content: '每周五下午14:00-17:00为一号实验楼401开放时间，欢迎全院师生参观交流。' },
     ])),
 
-    // 实验室风采图片（从真实图片中选4张）
+    // 实验室风采图片（实验室风采文件夹中的4张）
     gallery: JSON.parse(localStorage.getItem('site_gallery') || JSON.stringify([
-        { id: 1, title: '实验室全景', url: 'assets/gallery/lab-environment/2e2bcc4fb2d868aea075c94a3ea482d3.jpg' },
-        { id: 2, title: '科研实验', url: 'assets/gallery/lab-environment/620f04f4e64dabbf3754cfeb04c110f5.jpg' },
-        { id: 3, title: '团队研讨', url: 'assets/gallery/lab-environment/6aa4dad0643b3741b898ef9a42a0fe1f.jpg' },
-        { id: 4, title: '设备操作', url: 'assets/gallery/lab-environment/8d89e2a21420d9768b25d23c64cbd31e.jpg' },
+        { id: 1, title: '实验室风采', url: 'assets/gallery/lab-showcase/1a6f746c373cbdbd4ec07d8bdb1badfb.jpg' },
+        { id: 2, title: '实验室风采', url: 'assets/gallery/lab-showcase/6aa4dad0643b3741b898ef9a42a0fe1f.jpg' },
+        { id: 3, title: '实验室风采', url: 'assets/gallery/lab-showcase/8d89e2a21420d9768b25d23c64cbd31e.jpg' },
+        { id: 4, title: '实验室风采', url: 'assets/gallery/lab-showcase/ac0dae6a6249e7a636cca5ede3cf47e8.jpg' },
     ])),
 
     // 实验室环境照片（14张全部展示）
