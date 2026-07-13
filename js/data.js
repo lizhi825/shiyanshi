@@ -145,11 +145,11 @@ const SiteData = {
 
     // 团队照片（用于展示）
     teamPhotos: [
-        'assets/gallery/team-members/21a28e9abbf5c6d51fbd55d77bf1ee74.png',
-        'assets/gallery/team-members/2971bafe8a2180c115bf6c9d6def55cd.png',
+        'assets/gallery/team-members/21a28e9abbf5c6d51fbd55d77bf1ee74.jpg',
+        'assets/gallery/team-members/2971bafe8a2180c115bf6c9d6def55cd.jpg',
         'assets/gallery/team-members/a4cb3ad2ae5333c86dfad20b62527905.jpg',
-        'assets/gallery/team-members/d863a3fbb706e8d05e979672a2976441.png',
-        'assets/gallery/team-members/fd16ddea9d232c21e9499dc680ba9a46.png',
+        'assets/gallery/team-members/d863a3fbb706e8d05e979672a2976441.jpg',
+        'assets/gallery/team-members/fd16ddea9d232c21e9499dc680ba9a46.jpg',
     ],
 
     // 毕业合影
@@ -167,9 +167,9 @@ const SiteData = {
             title: '团建文化',
             desc: '研究所定期组织户外拓展、聚餐、文体活动等团建项目，让成员在科研之余放松身心，增强团队凝聚力。团建活动不仅拉近了师生距离，也培养了成员之间的默契与信任。',
             photos: [
-                'assets/gallery/team-members/21a28e9abbf5c6d51fbd55d77bf1ee74.png',
-                'assets/gallery/team-members/d863a3fbb706e8d05e979672a2976441.png',
-                'assets/gallery/team-members/fd16ddea9d232c21e9499dc680ba9a46.png',
+                'assets/gallery/team-members/21a28e9abbf5c6d51fbd55d77bf1ee74.jpg',
+                'assets/gallery/team-members/d863a3fbb706e8d05e979672a2976441.jpg',
+                'assets/gallery/team-members/fd16ddea9d232c21e9499dc680ba9a46.jpg',
             ]
         },
         boardGame: {
