@@ -101,7 +101,6 @@ function renderDynamicContent() {
     renderResearch();
     renderStudentProjects();
     renderHonors();
-    renderCertificates();
     renderTeam();
     renderTeamPhotos();
     renderLabCulture();
@@ -209,17 +208,6 @@ function renderHonors() {
             <div class="honor-badge">${h.badge}</div>
             <h4>${h.title}</h4>
             <p>${h.desc}</p>
-        </div>
-    `).join('');
-}
-
-// ========== 获奖证书 ==========
-function renderCertificates() {
-    const gallery = document.getElementById('certGallery');
-    if (!gallery) return;
-    gallery.innerHTML = SiteData.certificates.map((url, i) => `
-        <div class="cert-item">
-            <img src="${url}" alt="获奖证书 ${i+1}" loading="lazy" onclick="openLightbox('${url}')">
         </div>
     `).join('');
 }
