@@ -41,7 +41,7 @@ const SiteData = {
     // 实验室介绍（真实文本）
     about: JSON.parse(localStorage.getItem('site_about') || JSON.stringify({
         intro: '哈尔滨理工大学海洋智能装备研究所（简称"海智所"）成立于2015年，是哈尔滨理工大学荣成学院首批成立的院级研究所之一，位于荣成学院一号实验楼401。研究所依托哈尔滨理工大学的学科优势，面向国家海洋强国战略，致力于海洋智能装备领域的前沿科学研究与关键技术攻关。',
-        intro2: '研究所现有副教授1人、硕士生导师1人、指导教师5人，在读研究生4人、本科学生15余人。下设海洋装备材料制备研究组、机电一体化研究组、金属精密成形研究组三个研究组，以创新性研发、解决实际问题、与企业进行项目合作作为研究特色，以培养学生专业技能和科研素养为目的，围绕海洋装备材料开展一系列纵向课题的研发。',
+        intro2: '研究所现有副教授1人（赵金涛老师）、指导教师2人（张振杰、贾明川），在读研究生4人（王新阳、董艳琪、曹漾、张晓伟），本科学生9人。下设海洋装备材料制备研究组、机电一体化研究组、金属精密成形研究组三个研究组，以创新性研发、解决实际问题、与企业进行项目合作作为研究特色，以培养学生专业技能和科研素养为目的，围绕海洋装备材料开展一系列纵向课题的研发。',
         mission: '秉承哈尔滨理工大学"知行统一，博厚悠远"的校训，面向世界科技前沿和国家重大需求，致力于成为国内一流的海洋智能装备研究基地，培养具有创新精神和实践能力的高素质人才，为我国海洋事业发展提供科技支撑。',
         stats: [
             { num: '2015', label: '成立年份' },
@@ -117,18 +117,37 @@ const SiteData = {
         'assets/gallery/certificates/a2347f54f71266835d38165c989ed2ef.jpg',
     ],
 
-    // 团队成员（使用真实照片）
-    team: JSON.parse(localStorage.getItem('site_team') || JSON.stringify([
-        { id: 1, photo: 'assets/gallery/team-members/21a28e9abbf5c6d51fbd55d77bf1ee74.png', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
-        { id: 2, photo: 'assets/gallery/team-members/2971bafe8a2180c115bf6c9d6def55cd.png', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
-        { id: 3, photo: 'assets/gallery/team-members/a4cb3ad2ae5333c86dfad20b62527905.jpg', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
-        { id: 4, photo: 'assets/gallery/team-members/d863a3fbb706e8d05e979672a2976441.png', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
-        { id: 5, photo: 'assets/gallery/team-members/fd16ddea9d232c21e9499dc680ba9a46.png', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
-    ])),
+    // 团队成员
+    team: {
+        faculty: [
+            { name: '赵金涛', title: '副教授', desc: '硕士研究生导师，研究所核心指导教师' },
+            { name: '张振杰', title: '指导教师', desc: '研究所指导教师' },
+            { name: '贾明川', title: '指导教师', desc: '研究所指导教师' },
+        ],
+        graduate: [
+            { name: '王新阳', title: '研究生', desc: '' },
+            { name: '董艳琪', title: '研究生', desc: '发表SCI论文' },
+            { name: '曹漾', title: '研究生', desc: '' },
+            { name: '张晓伟', title: '研究生', desc: '' },
+        ],
+        undergraduate: [
+            { name: '吴佳璘', title: '本科生', desc: '国家级大创负责人，东三省数学建模大赛获奖，成绩优异' },
+            { name: '陈宇烁', title: '本科生', desc: '成绩优异' },
+            { name: '孙文源', title: '本科生', desc: '国家级大创负责人，失效分析大赛省级二等奖，成绩优异' },
+            { name: '李智浩', title: '本科生', desc: '国家级大创负责人，数字工业设计大赛国奖' },
+            { name: '亓宇哲', title: '本科生', desc: '成绩优异' },
+            { name: '房爱谦', title: '本科生', desc: '省级大创负责人' },
+            { name: '王盛琪', title: '本科生', desc: '' },
+            { name: '康家硕', title: '本科生', desc: '国家级大创负责人' },
+            { name: '陈伟明', title: '本科生', desc: '保送山东大学' },
+        ]
+    },
 
-    // 团队合影
+    // 团队照片（用于展示）
     teamPhotos: [
         'assets/gallery/team-members/21a28e9abbf5c6d51fbd55d77bf1ee74.png',
+        'assets/gallery/team-members/2971bafe8a2180c115bf6c9d6def55cd.png',
+        'assets/gallery/team-members/a4cb3ad2ae5333c86dfad20b62527905.jpg',
         'assets/gallery/team-members/d863a3fbb706e8d05e979672a2976441.png',
         'assets/gallery/team-members/fd16ddea9d232c21e9499dc680ba9a46.png',
     ],

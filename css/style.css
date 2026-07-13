@@ -984,6 +984,72 @@ ul { list-style: none; }
     transform: scale(1.08);
 }
 
+/* ========== 团队成员新样式 ========== */
+.team-group {
+    margin-bottom: 40px;
+}
+.team-group-title {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-light);
+}
+.team-group-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+.team-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+.team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+.team-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+}
+.team-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.team-avatar-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+}
+.team-card h4 {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+.team-role {
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.team-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
 /* ========== Responsive additions ========== */
 @media (max-width: 992px) {
     .stats-grid { grid-template-columns: repeat(3, 1fr); }

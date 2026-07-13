@@ -241,19 +241,54 @@ function renderCertificates() {
 }
 
 // ========== 团队成员 ==========
+// ========== 团队成员 ==========
 function renderTeam() {
     const grid = document.getElementById('teamGrid');
     if (!grid) return;
-    grid.innerHTML = SiteData.team.map(t => `
-        <div class="team-card">
-            <div class="team-avatar">
-                <img src="${t.photo}" alt="${t.name}" loading="lazy">
-            </div>
-            <h4>${t.name}</h4>
-            <p class="team-role">${t.role}</p>
-            <p>${t.desc}</p>
-        </div>
-    `).join('');
+
+    const team = SiteData.team;
+    let html = '';
+
+    // 教师
+    html += `<div class="team-group"><h3 class="team-group-title">👨‍🏫 指导教师</h3><div class="team-group-grid">`;
+    team.faculty.forEach(t => {
+        html += `
+            <div class="team-card">
+                <div class="team-avatar"><span class="team-avatar-text">${t.name[0]}</span></div>
+                <h4>${t.name}</h4>
+                <p class="team-role">${t.title}</p>
+                ${t.desc ? `<p class="team-desc">${t.desc}</p>` : ''}
+            </div>`;
+    });
+    html += `</div></div>`;
+
+    // 研究生
+    html += `<div class="team-group"><h3 class="team-group-title">🎓 研究生</h3><div class="team-group-grid">`;
+    team.graduate.forEach(t => {
+        html += `
+            <div class="team-card">
+                <div class="team-avatar"><span class="team-avatar-text">${t.name[0]}</span></div>
+                <h4>${t.name}</h4>
+                <p class="team-role">${t.title}</p>
+                ${t.desc ? `<p class="team-desc">${t.desc}</p>` : ''}
+            </div>`;
+    });
+    html += `</div></div>`;
+
+    // 本科生
+    html += `<div class="team-group"><h3 class="team-group-title">📚 本科生</h3><div class="team-group-grid">`;
+    team.undergraduate.forEach(t => {
+        html += `
+            <div class="team-card">
+                <div class="team-avatar"><span class="team-avatar-text">${t.name[0]}</span></div>
+                <h4>${t.name}</h4>
+                <p class="team-role">${t.title}</p>
+                ${t.desc ? `<p class="team-desc">${t.desc}</p>` : ''}
+            </div>`;
+    });
+    html += `</div></div>`;
+
+    grid.innerHTML = html;
 }
 
 // ========== 团队合影 ==========
