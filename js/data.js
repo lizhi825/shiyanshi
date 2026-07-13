@@ -14,28 +14,28 @@ const SiteData = {
 
     // 实验室风采图片（从真实图片中选4张）
     gallery: JSON.parse(localStorage.getItem('site_gallery') || JSON.stringify([
-        { id: 1, title: '实验室全景', url: 'assets/gallery/实验室环境/2e2bcc4fb2d868aea075c94a3ea482d3.jpg' },
-        { id: 2, title: '科研实验', url: 'assets/gallery/实验室环境/620f04f4e64dabbf3754cfeb04c110f5.jpg' },
-        { id: 3, title: '团队研讨', url: 'assets/gallery/实验室环境/6aa4dad0643b3741b898ef9a42a0fe1f.jpg' },
-        { id: 4, title: '设备操作', url: 'assets/gallery/实验室环境/8d89e2a21420d9768b25d23c64cbd31e.jpg' },
+        { id: 1, title: '实验室全景', url: 'assets/gallery/lab-environment/2e2bcc4fb2d868aea075c94a3ea482d3.jpg' },
+        { id: 2, title: '科研实验', url: 'assets/gallery/lab-environment/620f04f4e64dabbf3754cfeb04c110f5.jpg' },
+        { id: 3, title: '团队研讨', url: 'assets/gallery/lab-environment/6aa4dad0643b3741b898ef9a42a0fe1f.jpg' },
+        { id: 4, title: '设备操作', url: 'assets/gallery/lab-environment/8d89e2a21420d9768b25d23c64cbd31e.jpg' },
     ])),
 
     // 实验室环境照片（14张全部展示）
     labEnvironment: [
-        'assets/gallery/实验室环境/1a6f746c373cbdbd4ec07d8bdb1badfb.jpg',
-        'assets/gallery/实验室环境/2e2bcc4fb2d868aea075c94a3ea482d3.jpg',
-        'assets/gallery/实验室环境/338aabb77425ca45558443a4c7be119a.jpg',
-        'assets/gallery/实验室环境/34a8c498b45b0569f88d6e5a2093defa.jpg',
-        'assets/gallery/实验室环境/40fb8e5f2d34a6835841c2c03ebdda24.jpg',
-        'assets/gallery/实验室环境/620f04f4e64dabbf3754cfeb04c110f5.jpg',
-        'assets/gallery/实验室环境/6aa4dad0643b3741b898ef9a42a0fe1f.jpg',
-        'assets/gallery/实验室环境/8d89e2a21420d9768b25d23c64cbd31e.jpg',
-        'assets/gallery/实验室环境/91c45b6cb29323ea181014e2d70b4fd3.jpg',
-        'assets/gallery/实验室环境/ac0dae6a6249e7a636cca5ede3cf47e8.jpg',
-        'assets/gallery/实验室环境/c8aaeb6439b800e3d1b97dae929d6d7c.jpg',
-        'assets/gallery/实验室环境/cc5d98046fc2cefdf16d7e8b8a893e40.jpg',
-        'assets/gallery/实验室环境/ef2a7ce2e4f35e3404d563ac4585babd.jpg',
-        'assets/gallery/实验室环境/effa20d65cddb44ff867fa6228b9ccda.jpg',
+        'assets/gallery/lab-environment/1a6f746c373cbdbd4ec07d8bdb1badfb.jpg',
+        'assets/gallery/lab-environment/2e2bcc4fb2d868aea075c94a3ea482d3.jpg',
+        'assets/gallery/lab-environment/338aabb77425ca45558443a4c7be119a.jpg',
+        'assets/gallery/lab-environment/34a8c498b45b0569f88d6e5a2093defa.jpg',
+        'assets/gallery/lab-environment/40fb8e5f2d34a6835841c2c03ebdda24.jpg',
+        'assets/gallery/lab-environment/620f04f4e64dabbf3754cfeb04c110f5.jpg',
+        'assets/gallery/lab-environment/6aa4dad0643b3741b898ef9a42a0fe1f.jpg',
+        'assets/gallery/lab-environment/8d89e2a21420d9768b25d23c64cbd31e.jpg',
+        'assets/gallery/lab-environment/91c45b6cb29323ea181014e2d70b4fd3.jpg',
+        'assets/gallery/lab-environment/ac0dae6a6249e7a636cca5ede3cf47e8.jpg',
+        'assets/gallery/lab-environment/c8aaeb6439b800e3d1b97dae929d6d7c.jpg',
+        'assets/gallery/lab-environment/cc5d98046fc2cefdf16d7e8b8a893e40.jpg',
+        'assets/gallery/lab-environment/ef2a7ce2e4f35e3404d563ac4585babd.jpg',
+        'assets/gallery/lab-environment/effa20d65cddb44ff867fa6228b9ccda.jpg',
     ],
 
     // 实验室介绍（真实文本）
@@ -113,32 +113,32 @@ const SiteData = {
 
     // 获奖证书图片
     certificates: [
-        'assets/gallery/获奖证书/1a13eaab44907694cae07df7b133c819.jpg',
-        'assets/gallery/获奖证书/a2347f54f71266835d38165c989ed2ef.jpg',
+        'assets/gallery/certificates/1a13eaab44907694cae07df7b133c819.jpg',
+        'assets/gallery/certificates/a2347f54f71266835d38165c989ed2ef.jpg',
     ],
 
     // 团队成员（使用真实照片）
     team: JSON.parse(localStorage.getItem('site_team') || JSON.stringify([
-        { id: 1, photo: 'assets/gallery/实验室成员团结/21a28e9abbf5c6d51fbd55d77bf1ee74.png', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
-        { id: 2, photo: 'assets/gallery/实验室成员团结/2971bafe8a2180c115bf6c9d6def55cd.png', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
-        { id: 3, photo: 'assets/gallery/实验室成员团结/a4cb3ad2ae5333c86dfad20b62527905.jpg', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
-        { id: 4, photo: 'assets/gallery/实验室成员团结/d863a3fbb706e8d05e979672a2976441.png', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
-        { id: 5, photo: 'assets/gallery/实验室成员团结/fd16ddea9d232c21e9499dc680ba9a46.png', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
+        { id: 1, photo: 'assets/gallery/team-members/21a28e9abbf5c6d51fbd55d77bf1ee74.png', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
+        { id: 2, photo: 'assets/gallery/team-members/2971bafe8a2180c115bf6c9d6def55cd.png', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
+        { id: 3, photo: 'assets/gallery/team-members/a4cb3ad2ae5333c86dfad20b62527905.jpg', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
+        { id: 4, photo: 'assets/gallery/team-members/d863a3fbb706e8d05e979672a2976441.png', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
+        { id: 5, photo: 'assets/gallery/team-members/fd16ddea9d232c21e9499dc680ba9a46.png', name: '团队成员', role: '研究所成员', desc: '海洋智能装备研究所' },
     ])),
 
     // 团队合影
     teamPhotos: [
-        'assets/gallery/实验室成员团结/21a28e9abbf5c6d51fbd55d77bf1ee74.png',
-        'assets/gallery/实验室成员团结/d863a3fbb706e8d05e979672a2976441.png',
-        'assets/gallery/实验室成员团结/fd16ddea9d232c21e9499dc680ba9a46.png',
+        'assets/gallery/team-members/21a28e9abbf5c6d51fbd55d77bf1ee74.png',
+        'assets/gallery/team-members/d863a3fbb706e8d05e979672a2976441.png',
+        'assets/gallery/team-members/fd16ddea9d232c21e9499dc680ba9a46.png',
     ],
 
     // 毕业合影
     graduationPhotos: [
-        'assets/gallery/中国毕业照片/13fa7d554604baa2e008281b314a81b9.jpg',
-        'assets/gallery/中国毕业照片/37d6add21fe400762ed9e902394c4013.jpg',
-        'assets/gallery/中国毕业照片/49af5ba4ede7b4905dc2cfb12c7ccb27.jpg',
-        'assets/gallery/中国毕业照片/63ab6ae5c1fccb1b65801db7a9afeac9.jpg',
+        'assets/gallery/graduation-photos/13fa7d554604baa2e008281b314a81b9.jpg',
+        'assets/gallery/graduation-photos/37d6add21fe400762ed9e902394c4013.jpg',
+        'assets/gallery/graduation-photos/49af5ba4ede7b4905dc2cfb12c7ccb27.jpg',
+        'assets/gallery/graduation-photos/63ab6ae5c1fccb1b65801db7a9afeac9.jpg',
     ],
 
     // 新闻动态
