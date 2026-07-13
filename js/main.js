@@ -4,7 +4,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
-    initSlider();
     checkLoginStatus();
     renderDynamicContent();
 });
@@ -13,15 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link[data-page]');
     const quickLinks = document.querySelectorAll('[data-page]');
-    const moreLinks = document.querySelectorAll('.more-link[data-page]');
 
     function navigateTo(pageName) {
-        // 激活导航
         navLinks.forEach(l => l.classList.remove('active'));
         const targetNav = document.querySelector(`.nav-link[data-page="${pageName}"]`);
         if (targetNav) targetNav.classList.add('active');
 
-        // 切换页面
         document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
         const targetSection = document.getElementById(pageName);
         if (targetSection) {
@@ -29,7 +25,6 @@ function initNavigation() {
             targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // 检查登录状态
         if (pageName === 'qa') checkQAAccess();
         if (pageName === 'anonymous') checkAnonymousAccess();
     }
@@ -43,56 +38,14 @@ function initNavigation() {
 
     quickLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            if (link.classList.contains('nav-link') || link.classList.contains('more-link')) return;
-            e.preventDefault();
-            navigateTo(link.dataset.page);
-        });
-    });
-
-    moreLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+            if (link.classList.contains('nav-link')) return;
             e.preventDefault();
             navigateTo(link.dataset.page);
         });
     });
 }
 
-// ========== 轮播图 ==========
-function initSlider() {
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.slider-dot');
-    const prev = document.querySelector('.slider-arrow.prev');
-    const next = document.querySelector('.slider-arrow.next');
-    let current = 0;
-    let interval;
-
-    function goTo(index) {
-        slides[current].classList.remove('active');
-        dots[current].classList.remove('active');
-        current = (index + slides.length) % slides.length;
-        slides[current].classList.add('active');
-        dots[current].classList.add('active');
-    }
-
-    function nextSlide() { goTo(current + 1); }
-    function prevSlide() { goTo(current - 1); }
-
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => goTo(parseInt(dot.dataset.index)));
-    });
-
-    if (prev) prev.addEventListener('click', prevSlide);
-    if (next) next.addEventListener('click', nextSlide);
-
-    function startAuto() { interval = setInterval(nextSlide, 5000); }
-    function stopAuto() { clearInterval(interval); }
-
-    startAuto();
-    document.querySelector('.banner-slider')?.addEventListener('mouseenter', stopAuto);
-    document.querySelector('.banner-slider')?.addEventListener('mouseleave', startAuto);
-}
-
-// ========== 登录状态检查 ==========
+// ========== 登录状态 ==========
 function checkLoginStatus() {
     const user = getCurrentUser();
     if (user) {
@@ -140,18 +93,23 @@ function checkAnonymousAccess() {
     }
 }
 
-// ========== 动态内容渲染 ==========
+// ========== 动态渲染 ==========
 function renderDynamicContent() {
     renderNotices();
     renderGallery();
     renderAbout();
+    renderLabEnvironment();
     renderResearch();
     renderAchievements();
+    renderStudentProjects();
     renderHonors();
+    renderCertificates();
     renderTeam();
+    renderTeamPhotos();
     renderNews();
 }
 
+// ========== 通知公告 ==========
 function renderNotices() {
     const list = document.getElementById('noticeList');
     if (!list) return;
@@ -160,19 +118,32 @@ function renderNotices() {
     `).join('');
 }
 
+// ========== 实验室风采 ==========
 function renderGallery() {
     const grid = document.getElementById('galleryGrid');
     if (!grid) return;
     grid.innerHTML = SiteData.gallery.map(g => `
         <div class="gallery-item">
             ${g.url
-                ? `<img src="${g.url}" alt="${g.title}" style="width:100%;height:100%;object-fit:cover;">`
+                ? `<img src="${g.url}" alt="${g.title}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">`
                 : `<div class="gallery-placeholder">${g.title}</div>`
             }
         </div>
     `).join('');
 }
 
+// ========== 实验室环境 ==========
+function renderLabEnvironment() {
+    const env = document.getElementById('envGallery');
+    if (!env) return;
+    env.innerHTML = SiteData.labEnvironment.map((url, i) => `
+        <div class="env-item">
+            <img src="${url}" alt="实验室环境 ${i+1}" loading="lazy" onclick="openLightbox('${url}')">
+        </div>
+    `).join('');
+}
+
+// ========== 实验室介绍 ==========
 function renderAbout() {
     const content = document.getElementById('aboutContent');
     if (!content) return;
@@ -198,6 +169,7 @@ function renderAbout() {
     `;
 }
 
+// ========== 研究方向 ==========
 function renderResearch() {
     const grid = document.getElementById('researchGrid');
     if (!grid) return;
@@ -206,10 +178,16 @@ function renderResearch() {
             <div class="research-icon">${r.icon}</div>
             <h3>${r.title}</h3>
             <p>${r.desc}</p>
+            ${r.topics ? `
+                <div class="research-topics">
+                    ${r.topics.map(t => `<span class="topic-tag">${t}</span>`).join('')}
+                </div>
+            ` : ''}
         </div>
     `).join('');
 }
 
+// ========== 科研成果 ==========
 function renderAchievements() {
     const list = document.getElementById('achievementsList');
     if (!list) return;
@@ -224,6 +202,21 @@ function renderAchievements() {
     `).join('');
 }
 
+// ========== 学生项目 ==========
+function renderStudentProjects() {
+    const container = document.getElementById('studentProjects');
+    if (!container) return;
+    container.innerHTML = SiteData.studentProjects.map(sp => `
+        <div class="sp-group">
+            <h4 class="sp-level">${sp.level}</h4>
+            <ul class="sp-list">
+                ${sp.items.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+        </div>
+    `).join('');
+}
+
+// ========== 实验室荣誉 ==========
 function renderHonors() {
     const grid = document.getElementById('honorsGrid');
     if (!grid) return;
@@ -236,12 +229,26 @@ function renderHonors() {
     `).join('');
 }
 
+// ========== 获奖证书 ==========
+function renderCertificates() {
+    const gallery = document.getElementById('certGallery');
+    if (!gallery) return;
+    gallery.innerHTML = SiteData.certificates.map((url, i) => `
+        <div class="cert-item">
+            <img src="${url}" alt="获奖证书 ${i+1}" loading="lazy" onclick="openLightbox('${url}')">
+        </div>
+    `).join('');
+}
+
+// ========== 团队成员 ==========
 function renderTeam() {
     const grid = document.getElementById('teamGrid');
     if (!grid) return;
     grid.innerHTML = SiteData.team.map(t => `
         <div class="team-card">
-            <div class="team-avatar">${t.avatar}</div>
+            <div class="team-avatar">
+                <img src="${t.photo}" alt="${t.name}" loading="lazy">
+            </div>
             <h4>${t.name}</h4>
             <p class="team-role">${t.role}</p>
             <p>${t.desc}</p>
@@ -249,16 +256,28 @@ function renderTeam() {
     `).join('');
 }
 
+// ========== 团队合影 ==========
+function renderTeamPhotos() {
+    const grid = document.getElementById('teamPhotosGrid');
+    if (!grid) return;
+    grid.innerHTML = SiteData.teamPhotos.map((url, i) => `
+        <div class="team-photo-item">
+            <img src="${url}" alt="团队合影 ${i+1}" loading="lazy" onclick="openLightbox('${url}')">
+        </div>
+    `).join('');
+}
+
+// ========== 新闻动态 ==========
 function renderNews() {
     const list = document.getElementById('newsList');
     if (!list) return;
     list.innerHTML = SiteData.news.map(n => {
-        const [y, m] = n.date.split('-');
+        const parts = n.date.split('-');
         return `
             <article class="news-item">
                 <div class="news-date-box">
-                    <span class="news-day">${n.date.split('-')[2]}</span>
-                    <span class="news-month">${y}-${m}</span>
+                    <span class="news-day">${parts[2]}</span>
+                    <span class="news-month">${parts[0]}-${parts[1]}</span>
                 </div>
                 <div class="news-content">
                     <h4>${n.title}</h4>
@@ -324,6 +343,18 @@ function submitSuggestion() {
     document.getElementById('suggestionCategory').value = '';
     document.getElementById('suggestionContent').value = '';
     showToast('感谢您的匿名建议！');
+}
+
+// ========== Lightbox ==========
+function openLightbox(url) {
+    const lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.innerHTML = `
+        <span class="lightbox-close" onclick="this.parentElement.remove()">&times;</span>
+        <img src="${url}" alt="预览">
+    `;
+    lb.addEventListener('click', (e) => { if (e.target === lb) lb.remove(); });
+    document.body.appendChild(lb);
 }
 
 // ========== Toast ==========
