@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080,height=1920">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@600;700;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+  font-family: 'Noto Sans SC', sans-serif;
+  background: #020810;
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #020810 0%, #061428 30%, #0a1e3d 50%, #061428 70%, #020810 100%);
+  z-index: 0;
+}
+
+/* 大圆形装饰 */
+.circle-deco {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(77,168,218,0.06);
+  z-index: 0;
+}
+.cd1 { width: 600px; height: 600px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.cd2 { width: 500px; height: 500px; top: 50%; left: 50%; transform: translate(-50%, -50%); border-color: rgba(77,168,218,0.04); }
+.cd3 { width: 700px; height: 700px; top: 50%; left: 50%; transform: translate(-50%, -50%); border-color: rgba(77,168,218,0.03); }
+
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 90px 70px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 标题 */
+.title-block {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.title-block .pre {
+  font-size: 22px;
+  letter-spacing: 12px;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 20px;
+}
+.title-block h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 76px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 8px;
+  line-height: 1.3;
+}
+.title-block h1 .blue {
+  color: #4da8da;
+}
+
+/* FAQ卡片 */
+.faq-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.faq-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(77,168,218,0.1);
+  border-radius: 12px;
+  padding: 30px 36px;
+}
+.faq-card .q {
+  font-size: 28px;
+  color: #4da8da;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.faq-card .a {
+  font-size: 24px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+/* 底部 */
+.bottom {
+  text-align: center;
+  margin-top: auto;
+  padding: 40px 60px;
+  background: rgba(77,168,218,0.06);
+  border: 2px solid rgba(77,168,218,0.15);
+  border-radius: 16px;
+  width: 100%;
+}
+.bottom .big-text {
+  font-size: 40px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 6px;
+  margin-bottom: 16px;
+}
+.bottom .qq-big {
+  font-size: 64px;
+  font-weight: 900;
+  color: #4da8da;
+  letter-spacing: 8px;
+  margin-bottom: 8px;
+}
+.bottom .qq-name {
+  font-size: 24px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+.bottom .info {
+  font-size: 18px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 3px;
+}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="circle-deco cd1"></div>
+<div class="circle-deco cd2"></div>
+<div class="circle-deco cd3"></div>
+
+<div class="content">
+  <div class="title-block">
+    <div class="pre">海 智 所 · 新 生 必 看</div>
+    <h1>你最关心的<br><span class="blue">几个问题</span></h1>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-card">
+      <div class="q">Q：有专业要求吗？</div>
+      <div class="a">不需要！不限专业，只要感兴趣就能报名。</div>
+    </div>
+    <div class="faq-card">
+      <div class="q">Q：零基础能加入吗？</div>
+      <div class="a">当然！开学有学长带教培训，从零开始教。</div>
+    </div>
+    <div class="faq-card">
+      <div class="q">Q：培训学什么？</div>
+      <div class="a">CAD草图绘制、Creo/SolidWorks三维建模、C语言/Python编程，三周时间，每周学一个考一个。</div>
+    </div>
+    <div class="faq-card">
+      <div class="q">Q：考核难吗？通过率高吗？</div>
+      <div class="a">不难！只要跟着学长认真学，绝对能过。内容都很基础，每周一考，循序渐进，保证都还记得。加油owo</div>
+    </div>
+    <div class="faq-card">
+      <div class="q">Q：加入后有什么收获？</div>
+      <div class="a">参与国家级/省级大创项目、学科竞赛获奖、德育分、竞赛证书，优秀者发表SCI/EI论文，还有团建桌游温馨大家庭！</div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="big-text">扫码加群了解更多</div>
+    <div class="qq-big">464750423</div>
+    <div class="qq-name">哈理工海智所迎新群</div>
+    <div class="info">📍 一号实验楼401 · 📞 17667031628</div>
+  </div>
+</div>
+</body>
+</html>
