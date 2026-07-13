@@ -99,7 +99,6 @@ function renderDynamicContent() {
     renderAbout();
     renderLabEnvironment();
     renderResearch();
-    renderAchievements();
     renderStudentProjects();
     renderHonors();
     renderCertificates();
@@ -183,21 +182,6 @@ function renderResearch() {
                     ${r.topics.map(t => `<span class="topic-tag">${t}</span>`).join('')}
                 </div>
             ` : ''}
-        </div>
-    `).join('');
-}
-
-// ========== 科研成果 ==========
-function renderAchievements() {
-    const list = document.getElementById('achievementsList');
-    if (!list) return;
-    list.innerHTML = SiteData.achievements.map(a => `
-        <div class="achievement-item">
-            <span class="ach-year">${a.year}</span>
-            <div class="ach-content">
-                <h4>${a.title}</h4>
-                <p>${a.desc}</p>
-            </div>
         </div>
     `).join('');
 }
